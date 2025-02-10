@@ -107,7 +107,7 @@ Voici quelques images de notre interface ainsi que les résultats obtenus lors d
 
 ---
 
-###**🎯 Sélection du modèle final** 
+### 🎯 **Sélection du modèle final** 
 
 D'après les résultats obtenus dans les tableaux précédents, nous avons observé que les performances des modèles sont relativement proches, avec des résultats satisfaisants sur le dataset d'évaluation. Toutefois, sur le dataset de test, nous avons constaté une diminution des performances. **GPT-NeoX-20B** et **LLaMA-3-8B** se sont révélés être les plus performants. 
 
