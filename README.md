@@ -233,32 +233,69 @@ print(generate_poem("Un poème sur l'automne"))
 💡 **Attention :**
 - Notre code est conçu pour être exécuté sur **Google Colab**.
 - Vous devez **posséder une clé d'authentification pour `pyngrok`** si vous souhaitez déployer l'application de la même manière.
-- Tous les fichiers nécessaires à l'exécution se trouvent dans `app.py`.
+- Tous le code nécessaires à l'exécution se trouvent dans `app.py`.
 
 ### **🔧 Étapes pour lancer l'application :**
 
-1️⃣ **Téléchargez les modèles et placez-les dans votre Google Drive** en vérifiant bien les chemins d'accès.
 
-2️⃣ **Installez les dépendances nécessaires (`streamlit`, `pyngrok`, etc.)** et assurez-vous de disposer d'un **GPU A100** pour l'exécution optimale.
+## 🚀 2. Lancer l'Application avec le Modèle Fine-Tuné
 
-3️⃣ **Ajoutez vos clés d'authentification et exécutez `app.py` sur Google Colab**.
+### **🔧 Étapes pour lancer l'application :**
 
-4️⃣ **Lancez l'application avec Streamlit et accédez-y via un tunnel `ngrok`.**
+1️⃣ **Charger le modèle depuis Hugging Face** en utilisant les identifiants des modèles fine-tunés :
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
-📌 **Commande pour lancer l'application**
+model_name = "IAyamina/mistral7b_on_instruction_poems"
+model = AutoModelForCausalLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+```
+
+2️⃣ **Installer les dépendances nécessaires (`streamlit`, `pyngrok`, etc.)** et s'assurer de disposer d'un **GPU A100** pour une exécution optimale.
+
+3️⃣ **Exécuter `app.py` et lancer l'application Streamlit :**
 ```bash
 !streamlit run app.py --server.port 8501
 ```
-📌 Détails techniques : Le fine-tuning a été effectué sur Google Colab avec transformers, torch et datasets et GPU A100 est obligatoire.
+
+📌 **Détails techniques :**
+- Le fine-tuning a été effectué sur **Google Colab** en utilisant `transformers`, `torch` et `datasets`.
+- Tous les modèles sont accessibles via Hugging Face.
+- Une connexion Internet stable et un GPU puissant sont recommandés pour des performances optimales.
+
+
+
 ---
 
-## 📌 Prochaines Étapes
+## 📌 Deuxième Étape :
 
-✅ **Fine-tuning et évaluation des modèles**<br>
-✅ **Sélection du meilleur modèle - Mistral 7B Fine-Tuned**<br>
+✅ **Réalisation de l'Application Utilisateur**
+
+Après avoir sélectionné le modèle le plus performant, l'étape suivante consiste à **développer une interface conviviale** permettant aux utilisateurs de générer des poèmes de manière interactive. Cette application offrira plusieurs fonctionnalités :
+
+- Interface intuitive développée avec **Streamlit**.
+- Génération instantanée de poèmes à partir d'un titre et d'instructions.
+- Personnalisation du style et des thèmes de poèmes.
+- Évaluation en temps réel des poèmes générés.
+
+📌 **L'application sera hébergée en ligne pour une utilisation simplifiée par les utilisateurs.**
+
 
 
 ---
+
+
+## 🔮 Perspectives et Améliorations
+
+Pour améliorer les performances de notre modèle, plusieurs pistes d’amélioration sont envisagées :
+
+- **Réentraînement sur un dataset plus large et diversifié** contenant des poèmes de différents styles afin d’augmenter la capacité du modèle à capturer diverses structures poétiques.
+- **Application du Reinforcement Fine-Tuning** avec l’algorithme **PPO (Proximal Policy Optimization)** pour affiner encore davantage la qualité des poèmes générés et améliorer leur cohérence stylistique et sémantique.
+- **Optimisation des paramètres du modèle** pour un meilleur compromis entre qualité des résultats et rapidité d’exécution.
+
+Ces améliorations permettront d’obtenir un modèle plus performant et capable de générer des poèmes encore plus authentiques et personnalisés.
+
+-----
 
 ## 🤝 Contribuer
 
