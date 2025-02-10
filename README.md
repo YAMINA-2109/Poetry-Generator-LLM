@@ -102,41 +102,68 @@ Voici quelques images de notre interface ainsi que les résultats obtenus lors d
 
 ## 🚀 2. Accès Public au Modèle Fine-Tuné
 
-💡 **Problème initial :** Les modèles fine-tunés étaient stockés sur Google Drive, ce qui empêchait leur accès public.
+🔗 **Les modèles fine-tunés ne sont pas encore hébergés, mais vous pouvez les retrouver dans le dossier `models/` de ce dépôt GitHub.**
 
-✅ **Solution : Hébergement sur Hugging Face Model Hub**
+✅ **Solution :**
+- Téléchargez le modèle sur votre machine ou votre Google Drive.
+- Utilisez-le directement avec **Hugging Face** comme un modèle local.
+- Exécutez les notebooks associés pour **réentraîner** le modèle et modifier les hyperparamètres si nécessaire.
 
-### **📦 Héberger le modèle sur Hugging Face**
-1. **Se connecter à Hugging Face et uploader le modèle** :
-```python
-from huggingface_hub import login, upload_folder
+💡 **Attention :**
+- **Mistral 7B et LLaMA-3-8B nécessitent une clé d’accès**. Vous devez **demander l’accès** sur Hugging Face pour pouvoir les utiliser.
 
-login(token="TON_HF_TOKEN")
-model_path = "/content/drive/MyDrive/mistral7b_on_instruction_poems"
-repo_id = "ton-utilisateur/mistral7b_finetuned"
-upload_folder(repo_id=repo_id, folder_path=model_path)
-```
+### **🔧 Étapes pour utiliser le modèle fine-tuné :**
 
-2. **Utiliser le modèle depuis n’importe où** :
+1️⃣ **Téléchargez le modèle** depuis le dossier `models/` sur GitHub.
+2️⃣ **Chargez le modèle dans votre script Python** :
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model = AutoModelForCausalLM.from_pretrained("ton-utilisateur/mistral7b_finetuned")
-tokenizer = AutoTokenizer.from_pretrained("ton-utilisateur/mistral7b_finetuned")
+model_path = "chemin/vers/le/model"
+model = AutoModelForCausalLM.from_pretrained(model_path)
+tokenizer = AutoTokenizer.from_pretrained(model_path)
 ```
+3️⃣ **Générez un poème en utilisant le modèle :**
+```python
+def generate_poem(prompt):
+    inputs = tokenizer(prompt, return_tensors="pt")
+    output = model.generate(**inputs, max_length=100)
+    return tokenizer.decode(output[0], skip_special_tokens=True)
 
-🔗 **Modèle hébergé sur :** [Hugging Face Model Hub](https://huggingface.co/ton-utilisateur/mistral7b_finetuned)
+print(generate_poem("Un poème sur l'automne"))
+```
+4️⃣ **Si nécessaire, entraînez à nouveau le modèle avec les notebooks disponibles.**
 
+---
+
+## 🚀 3. Lancer l'Application et Tester les Poèmes
+
+💡 **Attention :**
+- Notre code est conçu pour être exécuté sur **Google Colab**.
+- Vous devez **posséder une clé d'authentification pour `pyngrok`** si vous souhaitez déployer l'application de la même manière.
+- Tous les fichiers nécessaires à l'exécution se trouvent dans `app.py`.
+
+### **🔧 Étapes pour lancer l'application :**
+
+1️⃣ **Téléchargez les modèles et placez-les dans votre Google Drive** en vérifiant bien les chemins d'accès.
+
+2️⃣ **Installez les dépendances nécessaires (`streamlit`, `pyngrok`, etc.)** et assurez-vous de disposer d'un **GPU A100** pour l'exécution optimale.
+
+3️⃣ **Ajoutez vos clés d'authentification et exécutez `app.py` sur Google Colab**.
+
+4️⃣ **Lancez l'application avec Streamlit et accédez-y via un tunnel `ngrok`.**
+
+📌 **Commande pour lancer l'application**
+```bash
+!streamlit run app.py --server.port 8501
+```
 ---
 
 ## 📌 Prochaines Étapes
 
 ✅ **Fine-tuning et évaluation des modèles**<br>
-✅ **Sélection du meilleur modèle (Mistral 7B Fine-Tuned)**<br>
-✅ **Hébergement du modèle sur Hugging Face pour accès public**<br>
-🔜 **Ajout d’une visualisation graphique des résultats de l’évaluation**<br>
-🔜 **Déploiement de l’application sur Hugging Face Spaces ou un serveur cloud**<br>
-🔜 **Ajout d’un module d’amélioration stylistique des poèmes générés**<br>
+✅ **Sélection du meilleur modèle - Mistral 7B Fine-Tuned**<br>
+
 
 ---
 
