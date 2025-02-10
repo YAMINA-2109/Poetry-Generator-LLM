@@ -32,13 +32,25 @@ Nous avons testé et comparé **quatre modèles de langage** pour la génératio
 4. **Comparaison des résultats** : Sélection du modèle le plus performant pour l'application finale.
 
 #### **📊 Résultats de l’évaluation :**
+## **1️⃣ Sur le dataset d'évaluation (que le modèle a vu durant l'entraînement) :** 
+
+| Modèle | ROUGE-1 | ROUGE-2 | ROUGE-L | Cosine Similarity |
+|--------|---------|---------|---------|------------------|
+| GPT-2 Fine-Tuned | 0.8345 | 0.7342 | 0.8268 | 0.5457 |
+| LLaMA-3-8B Fine-Tuned | 0.7895 | 0.6595 | 0.7802 | 0.6239 |
+| GPT-NeoX-20B Fine-Tuned | 0.7002 | 0.4991 | 	0.6892 | 0.5245 |
+| Mistral 7B Fine-Tuned | 0.7055 | 	0.5208 | 0.6934 | 0.6023 |
+		
+
+## **2️⃣ Sur le dataset de test (des données que le modèle n'a jamais vues) :** 
 
 | Modèle | BLEU Score | ROUGE-1 | ROUGE-2 | ROUGE-L | Cosine Similarity |
 |--------|-----------|---------|---------|---------|------------------|
 | GPT-2 Fine-Tuned | 0.0222 | 0.2000 | 0.0486 | 0.1517 | 0.0029 |
-| LLaMA-3-8B Fine-Tuned | 0.0051 | 0.2029 | 0.0228 | 0.1318 | 0.1898 |
-| GPT-NeoX-20B (non fine-tuné) | - | - | - | - | - |
-| **Mistral 7B Fine-Tuned** | **0.0034** | **0.1684** | **0.0189** | **0.1113** | **0.1649** |
+| LLaMA-3-8B Fine-Tuned | 0.0138 |0.1531 | 0.0290 | 0.0970 | 0.1499 |
+| GPT-NeoX-20B Fine-Tuned| - | - | - | - | - |
+| Mistral 7B Fine-Tuned | 0.0034 | 0.0906 | 0.0178 | 0.0645 | 0.0866 |
+
 
 🎯 **Le modèle ..... Fine-Tuned a été sélectionné pour l’application finale.**
 
