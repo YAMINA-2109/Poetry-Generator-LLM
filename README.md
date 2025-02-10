@@ -17,10 +17,10 @@ Bienvenue dans ce projet de **génération de poèmes** basé sur le **fine-tuni
 
 Nous avons testé et comparé **quatre modèles de langage** pour la génération de poèmes :
 
-1. **GPT-2 Fine-Tuned** 
-2. **LLaMA-3-8B Fine-Tuned** 
-3. **Mistral 7B Fine-Tuned** 
-4. **GPT-NeoX-20B Fine-Tuned**
+1. **GPT-2** 
+2. **LLaMA-3-8B** 
+3. **Mistral 7B** 
+4. **GPT-NeoX-20B**
 
 📌 **Tous les notebooks de fine-tuning sont disponibles dans le dossier `notebooks/` du dépôt.**
 
@@ -107,7 +107,7 @@ Voici quelques images de notre interface ainsi que les résultats obtenus lors d
 
 ---
 
-🎯 ### **Sélection du modèle final** 
+###**🎯 Sélection du modèle final** 
 
 D'après les résultats obtenus dans les tableaux précédents, nous avons observé que les performances des modèles sont relativement proches, avec des résultats satisfaisants sur le dataset d'évaluation. Toutefois, sur le dataset de test, nous avons constaté une diminution des performances. **GPT-NeoX-20B** et **LLaMA-3-8B** se sont révélés être les plus performants. 
 
@@ -179,7 +179,7 @@ Don’t bother the Earth Spirit, she’s busy,
 - Il a une bonne gestion des prompts et une cohérence stylistique plus marquée.  
 - Il est plus léger et moins gourmand en mémoire que LLaMA-3-8B, ce qui facilite son déploiement et son utilisation.  
 
-Ainsi, **Mistral 7B Fine-Tuned sera utilisé dans notre application finale** pour générer des poèmes en fonction des thèmes et des instructions de l’utilisateur. 🚀
+  Ainsi, **Mistral 7B Fine-Tuned sera utilisé dans notre application finale** pour générer des poèmes en fonction des thèmes et des instructions de l’utilisateur. 🚀
 ---
 
 ## 🚀 2. Accès Public aux Modèles Fine-Tunés
