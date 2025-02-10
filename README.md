@@ -141,6 +141,7 @@ def generate_poem(prompt):
 
 print(generate_poem("Un poème sur l'automne"))
 ```
+
 3️⃣ **Si nécessaire, entraînez à nouveau le modèle avec les notebooks disponibles.**
 ---
 
