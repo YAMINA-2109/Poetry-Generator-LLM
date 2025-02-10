@@ -40,21 +40,28 @@ Nous avons testé et comparé **quatre modèles de langage** pour la génératio
 | LLaMA-3-8B Fine-Tuned | 0.7895 | 0.6595 | 0.7802 | 0.6239 |
 | GPT-NeoX-20B Fine-Tuned | 0.7002 | 0.4991 | 	0.6892 | 0.5245 |
 | Mistral 7B Fine-Tuned | 0.7055 | 	0.5208 | 0.6934 | 0.6023 |
-		
+
+📌 **Analyse des résultats :**  
+- **GPT-2 Fine-Tuned** affiche les meilleurs scores ROUGE, indiquant une forte correspondance avec les textes d'entraînement.  
+- **LLaMA-3-8B Fine-Tuned** a la meilleure **similarité cosinus**, ce qui suggère qu'il capture mieux la structure sémantique globale.  
+- **Mistral 7B et GPT-NeoX-20B** ont des performances légèrement inférieures mais restent compétitifs.
+
+---
 
 ## **2️⃣ Sur le dataset de test (des données que le modèle n'a jamais vues) :** 
 
 | Modèle | BLEU Score | ROUGE-1 | ROUGE-2 | ROUGE-L | Cosine Similarity |
 |--------|-----------|---------|---------|---------|------------------|
-| GPT-2 Fine-Tuned | 0.0222 | 0.2000 | 0.0486 | 0.1517 | 0.0029 |
 | LLaMA-3-8B Fine-Tuned | 0.0138 |0.1531 | 0.0290 | 0.0970 | 0.1499 |
-| GPT-NeoX-20B Fine-Tuned| - | - | - | - | - |
-| Mistral 7B Fine-Tuned | 0.0034 | 0.0906 | 0.0178 | 0.0645 | 0.0866 |
+| GPT-NeoX-20B Fine-Tuned| 0.0167 | 0.1272 |  0.0332 |0.1024 | 0.1589|
+| Mistral 7B Fine-Tuned | - | 0.0906 | 0.0178 | 0.0645 | 0.0866 |
+| GPT-2 Fine-Tuned | errerurs lors du test|
 
+📌 **Analyse des résultats :**  
+- **GPT-NeoX-20B Fine-Tuned** affiche le meilleur **score BLEU** et **ROUGE-2**, indiquant qu'il est plus précis dans la génération de séquences cohérentes.  
+- **LLaMA-3-8B Fine-Tuned** obtient le meilleur **ROUGE-1**, ce qui signifie qu'il capte bien les mots-clés des poèmes de référence.  
+- **Mistral 7B Fine-Tuned** a des scores plus faibles, suggérant une moindre généralisation aux nouvelles données.
 
-🎯 **Le modèle ..... Fine-Tuned a été sélectionné pour l’application finale.**
-
-📌 **Détails techniques :** Le fine-tuning a été effectué sur Google Colab avec `transformers`, `torch` et `datasets` et GPU `A100` est obligatoire.
 
 ---
 
@@ -67,7 +74,7 @@ Nous avons développé une **interface intuitive avec Streamlit** pour permettre
 - L’**exportation des résultats** au format CSV.
 - L’objectif principal de cette interface est d'évaluer et de comparer les modèles afin de sélectionner le plus performant.
 - Dans la prochaine étape, nous développerons une application adaptée aux utilisateurs finaux, intégrant le modèle choisi.
-- 
+  
 Voici quelques images de notre interface ainsi que les résultats obtenus lors de nos tests des modèles.
 ### **1️⃣ Sélection du modèle et génération d'un poème**
 ![Interface complète](images/interface_1_complete.PNG)
@@ -98,6 +105,81 @@ Voici quelques images de notre interface ainsi que les résultats obtenus lors d
 ![Évaluation sur dataset](images/gpt_2_result_2.PNG)
 ![Évaluation sur dataset](images/gpt2_scores_on_100_cols_1.PNG)
 
+---
+
+🎯 ### **Sélection du modèle final** 
+
+D'après les résultats obtenus dans les tableaux précédents, nous avons observé que les performances des modèles sont relativement proches, avec des résultats satisfaisants sur le dataset d'évaluation. Toutefois, sur le dataset de test, nous avons constaté une diminution des performances. **GPT-NeoX-20B** et **LLaMA-3-8B** se sont révélés être les plus performants. 
+
+Après plusieurs tests via notre interface (comme illustré par les images ci-dessous), nous avons exclu **GPT-2**, car il ne générait pas de poèmes de manière cohérente. De plus, **GPT-NeoX-20B** posait des problèmes de mémoire, rendant son utilisation peu pratique. Finalement, le choix s'est fait entre **LLaMA-3-8B et Mistral 7B**, car ces deux modèles généraient des poèmes de qualité respectant bien les instructions et le format.
+
+Voici un exemple des poèmes générés par ces deux modèles :
+
+📌 **Poème généré par LLaMA-3-8B**
+
+```
+Don’t Bother the Earth Spirit
+                      If you dig in the garden,
+                    Remember the Earth Spirit
+                      Is a restless thing,
+                    It does not like to be bothered
+                    With shovels and rakes.
+                      If you plant a tree,
+                    Don’t expect it to sit still,
+                    The Earth Spirit likes to play
+                    Hide-and-seek with its roots.
+                      If you build a house,
+                    Make sure it is deep,
+                    The Earth Spirit likes to visit
+                    And sometimes stay for a while.
+                      If you walk in the woods,
+                    Listen to the trees,
+                    They will tell you where the Earth Spirit
+                    Is hiding its treasures.
+                      If you listen to the wind,
+                    It will tell you where the Earth Spirit
+                    Is going with its secrets.
+                      If you follow the wind,
+                    You will find the Earth Spirit
+                    Dancing in the moonlight,
+                    And if you follow the moon,
+                    You will find the Earth Spirit
+                    Singing its wild song.
+                      Don’t bother the Earth Spirit.
+```
+
+📌 **Poème généré par Mistral 7B**
+
+```
+Don’t bother the Earth Spirit, she’s busy,
+                digging up roots, turning over stones,
+                searching for the lost and the forgotten,
+                the ones who wandered away from home.
+
+                She’s the one who knows where the fairies live,
+                the one who whispers to the wind,
+                the one who sings to the moon,
+                the one who dances with the stars.
+
+                She’s the one who weaves the dreams,
+                the one who paints the sunsets,
+                the one who holds the secrets,
+                the one who keeps the mysteries.
+
+                Don’t bother the Earth Spirit, she’s busy,
+                digging up roots, turning over stones,
+                searching for the lost and the forgotten,
+                the ones who wandered.
+```
+📌 **Après comparaison des résultats et observation des poèmes générés, nous avons décidé de choisir **Mistral 7B Fine-Tuned** comme modèle final pour notre application.** 
+
+✅ **Pourquoi Mistral 7B ?**  
+- Il génère des poèmes plus fluides et artistiques, capturant mieux l'essence des thèmes donnés.  
+- Il respecte bien les instructions et la structure des poèmes.  
+- Il a une bonne gestion des prompts et une cohérence stylistique plus marquée.  
+- Il est plus léger et moins gourmand en mémoire que LLaMA-3-8B, ce qui facilite son déploiement et son utilisation.  
+
+Ainsi, **Mistral 7B Fine-Tuned sera utilisé dans notre application finale** pour générer des poèmes en fonction des thèmes et des instructions de l’utilisateur. 🚀
 ---
 
 ## 🚀 2. Accès Public aux Modèles Fine-Tunés
@@ -141,7 +223,9 @@ def generate_poem(prompt):
 
 print(generate_poem("Un poème sur l'automne"))
 ```
-3️⃣ **Si nécessaire, entraînez à nouveau le modèle avec les notebooks disponibles.**
+
+**Si nécessaire, entraînez à nouveau le modèle avec les notebooks disponibles.**
+
 ---
 
 ## 🚀 3. Lancer l'Application et Tester les Poèmes
@@ -165,6 +249,7 @@ print(generate_poem("Un poème sur l'automne"))
 ```bash
 !streamlit run app.py --server.port 8501
 ```
+📌 Détails techniques : Le fine-tuning a été effectué sur Google Colab avec transformers, torch et datasets et GPU A100 est obligatoire.
 ---
 
 ## 📌 Prochaines Étapes
