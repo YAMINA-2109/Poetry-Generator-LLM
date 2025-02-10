@@ -100,30 +100,39 @@ Voici quelques images de notre interface ainsi que les résultats obtenus lors d
 
 ---
 
-## 🚀 2. Accès Public au Modèle Fine-Tuné
+## 🚀 2. Accès Public aux Modèles Fine-Tunés
 
-🔗 **Les modèles fine-tunés ne sont pas encore hébergés, mais vous pouvez les retrouver dans le dossier `models/` de ce dépôt GitHub.**
+🔗 **Les modèles fine-tunés sont hébergés sur Hugging Face et peuvent être téléchargés ici :**
+
+- [LLaMA-3-8B Fine-Tuned](https://huggingface.co/IAyamina/llama3-8b_on_instruction_poems)
+- [Mistral 7B Fine-Tuned](https://huggingface.co/IAyamina/mistral7b_on_instruction_poems)
+- [GPT-2 Fine-Tuned](https://huggingface.co/IAyamina/gpt2_on_instruction_poems)
+- [GPT-NeoX-20B Fine-Tuned](https://huggingface.co/IAyamina/gptneo20b_on_instruction_poems)
 
 ✅ **Solution :**
-- Téléchargez le modèle sur votre machine ou votre Google Drive.
-- Utilisez-le directement avec **Hugging Face** comme un modèle local.
+
+- Téléchargez le modèle directement depuis Hugging Face.
+- Utilisez-le avec **Hugging Face Transformers** dans vos scripts Python.
 - Exécutez les notebooks associés pour **réentraîner** le modèle et modifier les hyperparamètres si nécessaire.
 
 💡 **Attention :**
+
 - **Mistral 7B et LLaMA-3-8B nécessitent une clé d’accès**. Vous devez **demander l’accès** sur Hugging Face pour pouvoir les utiliser.
 
-### **🔧 Étapes pour utiliser le modèle fine-tuné :**
+### **🔧 Étapes pour utiliser un modèle fine-tuné :**
 
-1️⃣ **Téléchargez le modèle** depuis le dossier `models/` sur GitHub.
-2️⃣ **Chargez le modèle dans votre script Python** :
+1️⃣ **Chargez le modèle dans votre script Python :**
+
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_path = "chemin/vers/le/model"
-model = AutoModelForCausalLM.from_pretrained(model_path)
-tokenizer = AutoTokenizer.from_pretrained(model_path)
+model_name = "IAYamina/mistral7b_on_instruction_poems"  # Remplacez par le modèle souhaité
+model = AutoModelForCausalLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 ```
-3️⃣ **Générez un poème en utilisant le modèle :**
+
+2️⃣ **Générez un poème avec le modèle :**
+
 ```python
 def generate_poem(prompt):
     inputs = tokenizer(prompt, return_tensors="pt")
@@ -132,8 +141,7 @@ def generate_poem(prompt):
 
 print(generate_poem("Un poème sur l'automne"))
 ```
-4️⃣ **Si nécessaire, entraînez à nouveau le modèle avec les notebooks disponibles.**
-
+3️⃣ **Si nécessaire, entraînez à nouveau le modèle avec les notebooks disponibles.**
 ---
 
 ## 🚀 3. Lancer l'Application et Tester les Poèmes
