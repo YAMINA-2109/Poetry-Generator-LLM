@@ -55,7 +55,7 @@ Nous avons testé et comparé **quatre modèles de langage** pour la génératio
 | LLaMA-3-8B Fine-Tuned | 0.0138 |0.1531 | 0.0290 | 0.0970 | 0.1499 |
 | GPT-NeoX-20B Fine-Tuned| 0.0167 | 0.1272 |  0.0332 |0.1024 | 0.1589|
 | Mistral 7B Fine-Tuned | - | 0.0906 | 0.0178 | 0.0645 | 0.0866 |
-| GPT-2 Fine-Tuned | errerurs lors du test|
+| GPT-2 Fine-Tuned | erreurs techniques (cuda )
 
 📌 **Analyse des résultats :**  
 - **GPT-NeoX-20B Fine-Tuned** affiche le meilleur **score BLEU** et **ROUGE-2**, indiquant qu'il est plus précis dans la génération de séquences cohérentes.  
