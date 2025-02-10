@@ -20,7 +20,7 @@ Nous avons testé et comparé **quatre modèles de langage** pour la génératio
 1. **GPT-2 Fine-Tuned** 
 2. **LLaMA-3-8B Fine-Tuned** 
 3. **Mistral 7B Fine-Tuned** 
-4. **GPT-NeoX-20B (Testé mais non Fine-Tuné)**
+4. **GPT-NeoX-20B Fine-Tuned**
 
 📌 **Tous les notebooks de fine-tuning sont disponibles dans le dossier `notebooks/` du dépôt.**
 
@@ -60,23 +60,31 @@ Voici quelques images de notre interface ainsi que les résultats obtenus lors d
 ### **1️⃣ Sélection du modèle et génération d'un poème**
 ![Interface complète](images/interface_1_complete.PNG)
 
-### **2️⃣ Poème généré avec Mistral 7B**
+### **2️⃣ Sélection du modèle et génération de poèmes sur un ensemble de données (un dataset de plusieurs lignes)**
+![Interface 2](images/interface_2.PNG)
+
+### **3️⃣ Poème généré avec Mistral 7B**
 ![Poème généré](images/mistrale_generated_poeme_1.PNG)
+![Poème score](images/mistrale_7b_1_poeme_results_scores.PNG)
 
-### **3️⃣ Poème généré avec LLaMA-3-8B**
+### **4️⃣ Poème généré avec LLaMA-3-8B**
 ![Poème généré](images/poeme_llama_1.PNG)
+![Poème score](images/1_poeme_score_llama_1.PNG)
 
-### **4️⃣ Évaluation des scores BLEU et ROUGE pour LLaMA-3-8B**
-![Résultats d’évaluation](images/resultats_de_llama_1.PNG)
+### **5️⃣ Poème généré avec GPT-2**
+![Poème généré](images/gpt_2_generated_poeme.PNG)
 
-### **5️⃣ Évaluation des scores BLEU et ROUGE pour Mistral 7B**
-![Résultats d’évaluation](images/mistrale_7b_1_poeme_results_scores.PNG)
+### **6️⃣ Évaluation des scores BLEU et ROUGE pour LLaMA-3-8B sur un petit dataset de 50 lignes**
+![Résultats d’évaluation 1](images/resultats_llama_2.PNG)
+![Résultats d’évaluation 2](images/resultats_de_llama_1.PNG)
 
-### **6️⃣ Génération et évaluation d'un dataset entier**
+### **7️⃣ Évaluation des scores BLEU et ROUGE pour Mistral 7B sur un petit dataset de 50 lignes**
+![Résultats d’évaluation](images/mistral_7b_resultats_2.PNG)
+![Résultats d’évaluation 2](images/miostral_7b_resultats_1.PNG)
+
+### **8️⃣  Évaluation des scores BLEU et ROUGE pour GPT-2 sur un petit dataset de 50 lignes**
+![Évaluation sur dataset](images/gpt_2_result_2.PNG)
 ![Évaluation sur dataset](images/gpt2_scores_on_100_cols_1.PNG)
-
-### **7️⃣ Sélection du modèle optimal et comparaison des résultats**
-![Comparaison des modèles](images/mistral_7b_resultats_2.PNG)
 
 ---
 
